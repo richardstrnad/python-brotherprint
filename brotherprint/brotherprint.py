@@ -324,7 +324,8 @@ class BrotherPrint:
             None
         Raises:
             None'''
-        self.fsocket.send(text)
+        self.fsocket.send(text.encode('utf8'))
+
         
     def forward_feed(self, amount):
         '''Calling this function finishes input of the current line, then moves the vertical 
@@ -1028,8 +1029,8 @@ class BrotherPrint:
         if not data:
             data = ''
         size = len(data)
-        n1 = size%256
-        n2 = size/256
+        n1 = int(size%256)
+        n2 = int(size/256)
             
         self.send('^DI'+chr(n1)+chr(n2)+data)
     
