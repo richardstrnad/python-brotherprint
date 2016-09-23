@@ -900,9 +900,7 @@ class BrotherPrint:
         Raises:
             None
         '''
-        n1 = int(template)/10
-        n2 = int(template)%10
-        self.send('^TS'+'0'+str(n1)+str(n2))
+        self.send('^TS0{:02d}'.format(int(template)))
         
     def machine_op(self, operation):
         '''Perform machine operations
